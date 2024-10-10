@@ -3,7 +3,10 @@ Final Project for Computing Fundies 2140
 
 Installing Python
 - To install python, go to python.org
-- Follow steps
+- Follow steps on website
+- To check if it is installed, in a terminal, write this:
+    python --version
+- If it is installed, will print out the version you have
 
 
 Installing Tkinter
