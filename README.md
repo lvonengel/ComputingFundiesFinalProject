@@ -13,4 +13,4 @@ Installing Tkinter
 - In a terminal, write this command: 
     pip install tk
 
-- Tkinter is used to create a GUI
+- Tkinter is used to create the GUI of our project
