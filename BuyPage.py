@@ -1,7 +1,5 @@
-# BuyPage.py
-
 import tkinter as tk
-from PIL import Image, ImageTk  # Import Pillow for image handling
+from PIL import Image, ImageTk
 
 class BuyPage(tk.Frame):
     def __init__(self, parent, controller):
