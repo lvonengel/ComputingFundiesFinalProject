@@ -14,3 +14,9 @@ Installing Tkinter
     pip install tk
 
 - Tkinter is used to create the GUI of our project
+
+Installing Pillow
+- In a terminal, write this command:
+    pip install pillow
+
+- Pillow is used to change the dimensions of images
