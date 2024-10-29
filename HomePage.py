@@ -1,5 +1,5 @@
 import tkinter as tk
-from BuyPage import BuyPage
+from BuyPage import BuyPage  # Only import BuyPage
 from RemovePage import RemovePage
 from ViewPage import ViewPage
 
@@ -7,7 +7,10 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Shopping Cart Manager")
-        self.geometry("400x300")
+        self.geometry("500x600")
+
+        # Shared item list
+        self.item_list = []
 
         # Create a container to hold the different pages
         self.container = tk.Frame(self)
