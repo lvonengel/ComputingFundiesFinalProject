@@ -1,7 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 
-class DairyPage(tk.Frame):
+class SnacksPage(tk.Frame):
     def __init__(self, parent, controller):
         super().__init__(parent)
         self.controller = controller
@@ -11,12 +11,12 @@ class DairyPage(tk.Frame):
 
         # List of dairy items with name, price, and image path
         dairy_items = [
-            {"name": "Milk", "price": "$3.00", "image": "img/dairy.png"},
-            {"name": "Cheese", "price": "$5.00", "image": "img/dairy.png"},
-            {"name": "Yogurt", "price": "$2.50", "image": "img/dairy.png"},
-            {"name": "Butter", "price": "$4.00", "image": "img/dairy.png"},
-            {"name": "Cream", "price": "$3.50", "image": "img/dairy.png"},
-            {"name": "Cottage Cheese", "price": "$3.75", "image": "img/dairy.png"}
+            {"name": "Broom", "price": "$3.00", "image": "img/dairy.png"},
+            {"name": "Dustpan", "price": "$5.00", "image": "img/dairy.png"},
+            {"name": "Dish Soap", "price": "$2.50", "image": "img/dairy.png"},
+            {"name": "Sponge", "price": "$4.00", "image": "img/dairy.png"},
+            {"name": "Laundry Detergent", "price": "$3.50", "image": "img/dairy.png"},
+            {"name": "Paper Towel", "price": "$3.75", "image": "img/dairy.png"}
         ]
 
         # Store image references to prevent garbage collection

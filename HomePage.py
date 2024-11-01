@@ -2,13 +2,17 @@ import tkinter as tk
 from BuyPage import BuyPage
 from RemovePage import RemovePage
 from ViewPage import ViewPage
-from DairyPage import DairyPage  # Import DairyPage
+from DairyPage import DairyPage
+from ProducePage import ProducePage
+from HouseholdPage import HouseholdPage
+from SnacksPage import SnacksPage
+from BeveragesPage import BeveragesPage
 
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Shopping Cart Manager")
-        self.geometry("400x300")
+        self.geometry("500x600")
 
         # Shared item list
         self.item_list = []
@@ -19,8 +23,8 @@ class App(tk.Tk):
 
         self.frames = {}
 
-        # Adds each page (HomePage, BuyPage, RemovePage, ViewPage, DairyPage) to the container
-        for F in (HomePage, BuyPage, RemovePage, ViewPage, DairyPage):
+        # Adds each page (HomePage, BuyPage, RemovePage, ViewPage, DairyPage, ProducePage, HouseholdPage, SnacksPage, BeveragesPage) to the container
+        for F in (HomePage, BuyPage, RemovePage, ViewPage, DairyPage, ProducePage, HouseholdPage, SnacksPage, BeveragesPage):
             page_name = F.__name__
             frame = F(parent=self.container, controller=self)
             self.frames[page_name] = frame
