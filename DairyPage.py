@@ -11,7 +11,7 @@ class DairyPage(tk.Frame):
 
         # List of dairy items with name, price, and image path
         dairy_items = [
-            {"name": "16 oz Milk", "price": "$3.50", "image": "imgDairy/milk.jpg"},
+            {"name": "16oz Milk", "price": "$3.50", "image": "imgDairy/milk.jpg"},
             {"name": "Cheese", "price": "$7.00", "image": "imgDairy/cheese.png"},
             {"name": "4 pack of Yogurt", "price": "$3.00", "image": "imgDairy/yogurt.jpg"},
             {"name": "Butter", "price": "$5.00", "image": "imgDairy/butter.jpg"},

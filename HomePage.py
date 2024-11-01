@@ -1,4 +1,5 @@
 import tkinter as tk
+from PIL import Image, ImageTk
 from BuyPage import BuyPage
 from RemovePage import RemovePage
 from ViewPage import ViewPage
@@ -23,7 +24,7 @@ class App(tk.Tk):
 
         self.frames = {}
 
-        # Adds each page (HomePage, BuyPage, RemovePage, ViewPage, DairyPage, ProducePage, HouseholdPage, SnacksPage, BeveragesPage) to the container
+        # Adds each page to the container
         for F in (HomePage, BuyPage, RemovePage, ViewPage, DairyPage, ProducePage, HouseholdPage, SnacksPage, BeveragesPage):
             page_name = F.__name__
             frame = F(parent=self.container, controller=self)
@@ -51,21 +52,35 @@ class HomePage(tk.Frame):
         super().__init__(parent)
         self.controller = controller
 
-        label = tk.Label(self, text="Home Page", font=("Arial", 24))
+        label = tk.Label(self, text="Shopping Cart Manager", font=("Arial", 24))
         label.pack(pady=20)
+        
+        # Display a shopping cart image
+        try:
+            cart_image = Image.open("imgCategories/shoppingcart.png").resize((150, 150)) 
+            self.cart_photo = ImageTk.PhotoImage(cart_image)
+        except Exception as e:
+            print(f"Error loading shopping cart image: {e}")
+            self.cart_photo = None
+
+        # Display shopping cart image
+        if self.cart_photo:
+            cart_label = tk.Label(self, image=self.cart_photo)
+            cart_label.pack(pady=10)
+        
 
         # Button to go to Buy Page
-        button1 = tk.Button(self, text="Go to Buy Page", 
+        button1 = tk.Button(self, text="Buy Items", 
                             command=lambda: controller.show_frame("BuyPage"))
         button1.pack(pady=10)
 
         # Button to go to Remove Page
-        button2 = tk.Button(self, text="Go to Remove Page", 
+        button2 = tk.Button(self, text="Remove Items", 
                             command=lambda: controller.show_frame("RemovePage"))
         button2.pack(pady=10)
 
         # Button to go to View Page
-        button3 = tk.Button(self, text="Go to View Page", 
+        button3 = tk.Button(self, text="View Items", 
                             command=lambda: controller.show_frame("ViewPage"))
         button3.pack(pady=10)
 
