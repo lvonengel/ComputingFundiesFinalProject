@@ -2,7 +2,7 @@
 Final Project for Computing Fundies 2140
 
 Installing Python
-- To install python, go to python.org
+- To install python, go to python.org/downloads/
 - Follow steps on website
 - To check if it is installed, in a terminal, write this:
     python --version
