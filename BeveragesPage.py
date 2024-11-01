@@ -6,17 +6,17 @@ class BeveragesPage(tk.Frame):
         super().__init__(parent)
         self.controller = controller
 
-        label = tk.Label(self, text="Dairy Items", font=("Arial", 24))
+        label = tk.Label(self, text="Beverages Items", font=("Arial", 24))
         label.grid(row=0, column=0, columnspan=3, pady=20)
 
         # List of dairy items with name, price, and image path
         dairy_items = [
-            {"name": "Water", "price": "$3.00", "image": "img/dairy.png"},
-            {"name": "Coke", "price": "$5.00", "image": "img/dairy.png"},
-            {"name": "Milk", "price": "$2.50", "image": "img/dairy.png"},
-            {"name": "Orange Juice", "price": "$4.00", "image": "img/dairy.png"},
-            {"name": "Lemonade", "price": "$3.50", "image": "img/dairy.png"},
-            {"name": "Apple Cider", "price": "$3.75", "image": "img/dairy.png"}
+            {"name": "8 Pack of Water", "price": "$2.00", "image": "imgBeverages/water.jpg"},
+            {"name": "8 Pack of Coke", "price": "$3.50", "image": "imgBeverages/coke.png"},
+            {"name": "Milkshake", "price": "$2.50", "image": "imgBeverages/milkshake.jpg"},
+            {"name": "16oz Orange Juice", "price": "$4.00", "image": "imgBeverages/orangejuice.jpg"},
+            {"name": "16oz Lemonade", "price": "$3.50", "image": "imgBeverages/lemonade.jpg"},
+            {"name": "16oz Apple Cider", "price": "$3.75", "image": "imgBeverages/applecider.jpg"}
         ]
 
         # Store image references to prevent garbage collection

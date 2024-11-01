@@ -6,17 +6,17 @@ class ProducePage(tk.Frame):
         super().__init__(parent)
         self.controller = controller
 
-        label = tk.Label(self, text="Dairy Items", font=("Arial", 24))
+        label = tk.Label(self, text="Produce Items", font=("Arial", 24))
         label.grid(row=0, column=0, columnspan=3, pady=20)
 
         # List of dairy items with name, price, and image path
         dairy_items = [
-            {"name": "Apple", "price": "$3.00", "image": "img/dairy.png"},
-            {"name": "Banana", "price": "$5.00", "image": "img/dairy.png"},
-            {"name": "Cauliflower", "price": "$2.50", "image": "img/dairy.png"},
-            {"name": "Green Beans", "price": "$4.00", "image": "img/dairy.png"},
-            {"name": "Pear", "price": "$3.50", "image": "img/dairy.png"},
-            {"name": "Pepper", "price": "$3.75", "image": "img/dairy.png"}
+            {"name": "Apple", "price": "$0.75", "image": "imgProduce/apple.png"},
+            {"name": "Banana", "price": "$0.60", "image": "imgProduce/banana.png"},
+            {"name": "Cauliflower", "price": "$2.50", "image": "imgProduce/cauliflower.jpg"},
+            {"name": "Pack of Green Beans", "price": "$2.50", "image": "imgProduce/greenbeans.jpg"},
+            {"name": "Pear", "price": "$1.25", "image": "imgProduce/pear.png"},
+            {"name": "3 Pack Peppers", "price": "$4.00", "image": "imgProduce/peppers.jpg"}
         ]
 
         # Store image references to prevent garbage collection

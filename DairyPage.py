@@ -11,12 +11,12 @@ class DairyPage(tk.Frame):
 
         # List of dairy items with name, price, and image path
         dairy_items = [
-            {"name": "Milk", "price": "$3.00", "image": "img/dairy.png"},
-            {"name": "Cheese", "price": "$5.00", "image": "img/dairy.png"},
-            {"name": "Yogurt", "price": "$2.50", "image": "img/dairy.png"},
-            {"name": "Butter", "price": "$4.00", "image": "img/dairy.png"},
-            {"name": "Cream", "price": "$3.50", "image": "img/dairy.png"},
-            {"name": "Cottage Cheese", "price": "$3.75", "image": "img/dairy.png"}
+            {"name": "16 oz Milk", "price": "$3.50", "image": "imgDairy/milk.jpg"},
+            {"name": "Cheese", "price": "$7.00", "image": "imgDairy/cheese.png"},
+            {"name": "4 pack of Yogurt", "price": "$3.00", "image": "imgDairy/yogurt.jpg"},
+            {"name": "Butter", "price": "$5.00", "image": "imgDairy/butter.jpg"},
+            {"name": "Whipped Cream", "price": "$3.00", "image": "imgDairy/cream.jpg"},
+            {"name": "Cottage Cheese", "price": "$3.75", "image": "imgDairy/cottagecheese.png"}
         ]
 
         # Store image references to prevent garbage collection

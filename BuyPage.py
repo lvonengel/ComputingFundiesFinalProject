@@ -12,11 +12,11 @@ class BuyPage(tk.Frame):
 
         # List of category names, associated page names, and image paths
         categories = [
-            ("Dairy", "DairyPage", "img/dairy.png"),
-            ("Produce", "ProducePage", "img/produce.jpg"),
-            ("Household", "HouseholdPage", "img/household.jpg"),
-            ("Snacks", "SnacksPage", "img/pantry.png"),
-            ("Beverages", "BeveragesPage", "img/beverages.jpg")
+            ("Dairy", "DairyPage", "imgCategories/dairy.png"),
+            ("Produce", "ProducePage", "imgCategories/produce.jpg"),
+            ("Household", "HouseholdPage", "imgCategories/household.jpg"),
+            ("Snacks", "SnacksPage", "imgCategories/pantry.png"),
+            ("Beverages", "BeveragesPage", "imgCategories/beverages.jpg")
         ]
 
         # Store image references to prevent garbage collection

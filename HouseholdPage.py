@@ -6,17 +6,17 @@ class HouseholdPage(tk.Frame):
         super().__init__(parent)
         self.controller = controller
 
-        label = tk.Label(self, text="Dairy Items", font=("Arial", 24))
+        label = tk.Label(self, text="Household Items", font=("Arial", 24))
         label.grid(row=0, column=0, columnspan=3, pady=20)
 
         # List of dairy items with name, price, and image path
         dairy_items = [
-            {"name": "Broom", "price": "$3.00", "image": "img/dairy.png"},
-            {"name": "Dustpan", "price": "$5.00", "image": "img/dairy.png"},
-            {"name": "Dish Soap", "price": "$2.50", "image": "img/dairy.png"},
-            {"name": "Sponge", "price": "$4.00", "image": "img/dairy.png"},
-            {"name": "Laundry Detergent", "price": "$3.50", "image": "img/dairy.png"},
-            {"name": "Paper Towel", "price": "$3.75", "image": "img/dairy.png"}
+            {"name": "Broom", "price": "$4.00", "image": "imgHousehold/broom.png"},
+            {"name": "Plate Set", "price": "$5.00", "image": "imgHousehold/plate.png"},
+            {"name": "Dish Soap", "price": "$2.50", "image": "imgHousehold/dishsoap.jpeg"},
+            {"name": "Sponge", "price": "$3.00", "image": "imgHousehold/sponge.jpg"},
+            {"name": "Laundry Detergent", "price": "$12.00", "image": "imgHousehold/detergent.jpg"},
+            {"name": "8 Pack of Paper Towels", "price": "$10", "image": "imgHousehold/papertowel.jpg"}
         ]
 
         # Store image references to prevent garbage collection
