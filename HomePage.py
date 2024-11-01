@@ -15,7 +15,7 @@ class App(tk.Tk):
         self.geometry("500x600")
 
         # Shared item list
-        self.item_list = []
+        self.shopping_cart = []
 
         # Create a container to hold the different pages
         self.container = tk.Frame(self)
@@ -37,6 +37,13 @@ class App(tk.Tk):
         '''Bring the frame (page) to the front'''
         frame = self.frames[page_name]
         frame.tkraise()
+
+    def add_to_cart(self, item_name, item_price):
+        '''Add item to the shopping cart'''
+        item = {"name": item_name, "price": item_price}
+        self.shopping_cart.append(item)
+        print(f"Added {item_name} to the cart at price {item_price}.")
+        print("Current cart:", self.shopping_cart)
 
 # Home Page
 class HomePage(tk.Frame):

@@ -35,7 +35,8 @@ class HouseholdPage(tk.Frame):
 
             # Create a button with the image only (no text in button)
             button = tk.Button(self, image=image, compound="top",
-                               command=lambda name=item["name"]: self.add_to_cart(name))
+                               command=lambda name=item["name"], price=item["price"]: 
+                               controller.add_to_cart(name, price))
             button.grid(row=(i // 3) * 3 + 1, column=(i % 3), padx=10, pady=10)
 
             # Item name label below the button
