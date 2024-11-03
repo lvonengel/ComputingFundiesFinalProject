@@ -39,9 +39,9 @@ class App(tk.Tk):
         frame = self.frames[page_name]
         frame.tkraise()
 
-    def add_to_cart(self, item_name, item_price):
+    def add_to_cart(self, item_name, item_price, image):
         '''Add item to the shopping cart'''
-        item = {"name": item_name, "price": item_price}
+        item = {"name": item_name, "price": item_price, "image": image}
         self.shopping_cart.append(item)
         print(f"Added {item_name} to the cart at price {item_price}.")
         print("Current cart:", self.shopping_cart)

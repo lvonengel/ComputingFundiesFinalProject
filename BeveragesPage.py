@@ -35,8 +35,8 @@ class BeveragesPage(tk.Frame):
 
             # Create a button with the image only (no text in button)
             button = tk.Button(self, image=image, compound="top",
-                               command=lambda name=item["name"], price=item["price"]: 
-                               controller.add_to_cart(name, price))
+                               command=lambda name=item["name"], price=item["price"], image=item["image"]: 
+                               controller.add_to_cart(name, price, image))
             button.grid(row=(i // 3) * 3 + 1, column=(i % 3), padx=10, pady=10)
 
             # Item name label below the button
