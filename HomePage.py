@@ -45,6 +45,9 @@ class App(tk.Tk):
         self.shopping_cart.append(item)
         print(f"Added {item_name} to the cart at price {item_price}.")
         print("Current cart:", self.shopping_cart)
+        
+        # Update the ViewPage with the new cart contents
+        self.frames["ViewPage"].update_cart_display()
 
 # Home Page
 class HomePage(tk.Frame):
