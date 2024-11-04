@@ -1,7 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 from BuyPage import BuyPage
-from RemovePage import RemovePage
 from ViewPage import ViewPage
 from DairyPage import DairyPage
 from ProducePage import ProducePage
@@ -25,7 +24,7 @@ class App(tk.Tk):
         self.frames = {}
 
         # Adds each page to the container
-        for F in (HomePage, BuyPage, RemovePage, ViewPage, DairyPage, ProducePage, HouseholdPage, SnacksPage, BeveragesPage):
+        for F in (HomePage, BuyPage, ViewPage, DairyPage, ProducePage, HouseholdPage, SnacksPage, BeveragesPage):
             page_name = F.__name__
             frame = F(parent=self.container, controller=self)
             self.frames[page_name] = frame
@@ -77,13 +76,8 @@ class HomePage(tk.Frame):
                             command=lambda: controller.show_frame("BuyPage"))
         button1.pack(pady=10)
 
-        # Button to go to Remove Page
-        button2 = tk.Button(self, text="Remove Items", 
-                            command=lambda: controller.show_frame("RemovePage"))
-        button2.pack(pady=10)
-
         # Button to go to View Page
-        button3 = tk.Button(self, text="View Items", 
+        button3 = tk.Button(self, text="View/Remove Items", 
                             command=lambda: controller.show_frame("ViewPage"))
         button3.pack(pady=10)
 
