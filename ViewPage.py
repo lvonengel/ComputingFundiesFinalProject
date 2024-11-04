@@ -1,6 +1,7 @@
 # ViewPage.py
 
 import tkinter as tk
+from tkinter import ttk
 from PIL import Image, ImageTk
 
 class ViewPage(tk.Frame):
@@ -9,11 +10,26 @@ class ViewPage(tk.Frame):
         self.controller = controller
 
         label = tk.Label(self, text="View Items in Cart", font=("Arial", 24))
-        label.pack(pady=20)
+        label.pack(pady=10)
 
-        # Frame to hold the cart items
-        self.cart_frame = tk.Frame(self)
-        self.cart_frame.pack(pady=10)
+
+        # Canvas and scrollbar to hold the cart items
+        self.canvas = tk.Canvas(self)
+        self.canvas.pack(side="left", fill="both", expand=True)
+        self.scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
+        self.scrollable_frame = tk.Frame(self.canvas)
+
+        self.scrollable_frame.bind(
+            "<Configure>",
+            lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        )
+
+        # Add the scrollable frame to the canvas
+        self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+
+        self.canvas.pack(side="left", fill="both", expand=True)
+        self.scrollbar.pack(side="right", fill="y")
 
         # Store image references to prevent garbage collection
         self.images = []
@@ -22,8 +38,16 @@ class ViewPage(tk.Frame):
             self.x_image = Image.open("imgCategories/x_mark.png").resize((20, 20)) 
             self.x_photo = ImageTk.PhotoImage(self.x_image)
         except Exception as e:
-            print(f"Error loading shopping cart image: {e}")
+            print(f"Error x_mark image: {e}")
             self.x_photo = None
+
+        # make total and quantity counter
+        self.quantity = 0
+        self.total = 0
+        label = tk.Label(self, text="Quantity: ", font=("Arial", 10))
+        label.pack(pady=5)
+        label = tk.Label(self, text="Total: $", font=("Arial", 10))
+        label.pack(pady=10)
 
         # Button to go back to Home Page
         back_button = tk.Button(self, text="Back to Home", 
@@ -34,7 +58,7 @@ class ViewPage(tk.Frame):
         '''Refresh the display of items in the shopping cart'''
 
         # Clear the cart frame
-        for widget in self.cart_frame.winfo_children():
+        for widget in self.scrollable_frame.winfo_children():
             widget.destroy()
 
         # Get the current cart
@@ -52,19 +76,22 @@ class ViewPage(tk.Frame):
                 image = None
 
             # Image button for the item
-            button = tk.Button(self.cart_frame, image=image, compound="top")
-            button.grid(row=(i // 4) * 4 + 1, column=(i % 4), padx=10, pady=10)
+            button = tk.Button(self.scrollable_frame, image=image, compound="top")
+            button.grid(row=(i // 3) * 4 + 1, column=(i % 3), padx=10, pady=10)
 
             # Item name label below the button
-            name_label = tk.Label(self.cart_frame, text=item["name"], font=("Arial", 12))
-            name_label.grid(row=(i // 4) * 4 + 2, column=(i % 4), padx=5)
+            name_label = tk.Label(self.scrollable_frame, text=item["name"], font=("Arial", 9))
+            name_label.grid(row=(i // 3) * 4 + 2, column=(i % 3), padx=5)
 
             # Price label below the name
-            price_label = tk.Label(self.cart_frame, text=item["price"], font=("Arial", 10))
-            price_label.grid(row=(i // 4) * 4 + 3, column=(i % 4), padx=5)
+            price_label = tk.Label(self.scrollable_frame, text=item["price"], font=("Arial", 7))
+            price_label.grid(row=(i // 3) * 4 + 3, column=(i % 3), padx=5)
 
-            # button to remove item
-            button = tk.Button(self.cart_frame, image=self.x_photo, compound="top", 
+            # Button to remove item
+            remove_button = tk.Button(self.scrollable_frame, image=self.x_photo, compound="top", 
                                command=lambda name=item["name"], price=item["price"], image=item["image"]: 
                                self.controller.remove_from_cart(name, price, image))
-            button.grid(row=(i // 4) * 4 + 4, column=(i % 4), padx=10, pady=10)
+            remove_button.grid(row=(i // 3) * 4 + 4, column=(i % 3), padx=10, pady=10)
+
+    def on_mousewheel(self, event):
+        self.canvas.yview_scroll(-1 * (event.delta // 120), "units")
