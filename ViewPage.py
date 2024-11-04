@@ -18,6 +18,13 @@ class ViewPage(tk.Frame):
         # Store image references to prevent garbage collection
         self.images = []
 
+        try:
+            self.x_image = Image.open("imgCategories/x_mark.png").resize((20, 20)) 
+            self.x_photo = ImageTk.PhotoImage(self.x_image)
+        except Exception as e:
+            print(f"Error loading shopping cart image: {e}")
+            self.x_photo = None
+
         # Button to go back to Home Page
         back_button = tk.Button(self, text="Back to Home", 
                                 command=lambda: controller.show_frame("HomePage"))
@@ -32,7 +39,6 @@ class ViewPage(tk.Frame):
 
         # Get the current cart
         current_cart = self.controller.shopping_cart
-        print("Current cart:", current_cart)
 
         # Populate the cart frame with updated items
         for i, item in enumerate(current_cart):
@@ -47,12 +53,18 @@ class ViewPage(tk.Frame):
 
             # Image button for the item
             button = tk.Button(self.cart_frame, image=image, compound="top")
-            button.grid(row=(i // 3) * 3 + 1, column=(i % 3), padx=10, pady=10)
+            button.grid(row=(i // 4) * 4 + 1, column=(i % 4), padx=10, pady=10)
 
             # Item name label below the button
             name_label = tk.Label(self.cart_frame, text=item["name"], font=("Arial", 12))
-            name_label.grid(row=(i // 3) * 3 + 2, column=(i % 3), padx=5)
+            name_label.grid(row=(i // 4) * 4 + 2, column=(i % 4), padx=5)
 
             # Price label below the name
             price_label = tk.Label(self.cart_frame, text=item["price"], font=("Arial", 10))
-            price_label.grid(row=(i // 3) * 3 + 3, column=(i % 3), padx=5)
+            price_label.grid(row=(i // 4) * 4 + 3, column=(i % 4), padx=5)
+
+            # button to remove item
+            button = tk.Button(self.cart_frame, image=self.x_photo, compound="top", 
+                               command=lambda name=item["name"], price=item["price"], image=item["image"]: 
+                               self.controller.remove_from_cart(name, price, image))
+            button.grid(row=(i // 4) * 4 + 4, column=(i % 4), padx=10, pady=10)

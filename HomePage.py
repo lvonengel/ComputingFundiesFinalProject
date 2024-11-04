@@ -48,6 +48,19 @@ class App(tk.Tk):
         # Update the ViewPage with the new cart contents
         self.frames["ViewPage"].update_cart_display()
 
+    def remove_from_cart(self, item_name, item_price, image):
+        '''Add item to the shopping cart'''
+        item = {"name": item_name, "price": item_price, "image": image}
+        for i in range(len(self.shopping_cart)):
+            if self.shopping_cart[i] == item:
+                del self.shopping_cart[i]
+                break
+        print(f"Removed {item_name} from the cart.")
+        print("Current cart:", self.shopping_cart)
+        
+        # Update the ViewPage with the new cart contents
+        self.frames["ViewPage"].update_cart_display()
+
 # Home Page
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
