@@ -1,4 +1,5 @@
 import tkinter as tk
+import tkinter.ttk as ttk
 from PIL import Image, ImageTk
 from BuyPage import BuyPage
 from ViewPage import ViewPage
@@ -86,11 +87,15 @@ class HomePage(tk.Frame):
 
         # Button to go to Buy Page
         button1 = tk.Button(self, text="Buy Items", 
+                            width=20,
+                            height=3,
                             command=lambda: controller.show_frame("BuyPage"))
         button1.pack(pady=10)
 
         # Button to go to View Page
         button3 = tk.Button(self, text="View/Remove Items", 
+                            width=20,
+                            height=3,
                             command=lambda: controller.show_frame("ViewPage"))
         button3.pack(pady=10)
 
