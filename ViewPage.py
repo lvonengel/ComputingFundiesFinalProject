@@ -44,10 +44,10 @@ class ViewPage(tk.Frame):
         # make total and quantity counter
         self.quantity = 0
         self.total = 0
-        label = tk.Label(self, text="Quantity: ", font=("Arial", 10))
-        label.pack(pady=5)
-        label = tk.Label(self, text="Total: $", font=("Arial", 10))
-        label.pack(pady=10)
+        self.total_label = tk.Label(self, text="Quantity: ", font=("Arial", 10))
+        self.total_label.pack(pady=5)
+        self.quantity_label = tk.Label(self, text="Total: $", font=("Arial", 10))
+        self.quantity_label.pack(pady=10)
 
         # Button to go back to Home Page
         back_button = tk.Button(self, text="Back to Home", 
@@ -56,10 +56,12 @@ class ViewPage(tk.Frame):
 
     def update_cart_display(self):
         '''Refresh the display of items in the shopping cart'''
-
         # Clear the cart frame
         for widget in self.scrollable_frame.winfo_children():
             widget.destroy()
+        
+        self.quantity = 0
+        self.total = 0
 
         # Get the current cart
         current_cart = self.controller.shopping_cart
@@ -71,6 +73,8 @@ class ViewPage(tk.Frame):
                 pil_image = Image.open(item["image"]).resize((50, 50))
                 image = ImageTk.PhotoImage(pil_image)
                 self.images.append(image)  # Prevent garbage collection
+                self.total += round(float(item["price"][1:]), 2)
+                self.quantity += 1
             except Exception as e:
                 print(f"Could not load image for {item['name']}. Error: {e}")
                 image = None
@@ -92,6 +96,12 @@ class ViewPage(tk.Frame):
                                command=lambda name=item["name"], price=item["price"], image=item["image"]: 
                                self.controller.remove_from_cart(name, price, image))
             remove_button.grid(row=(i // 3) * 4 + 4, column=(i % 3), padx=10, pady=10)
+
+        self.quantity_label.config(text="Quantity: " + str(self.quantity))
+        self.total_label.config(text="Total: $" + "{:.2f}".format(self.total))
+
+        print("Total:", self.total)
+        print("Quantity:", self.quantity)
 
     def on_mousewheel(self, event):
         self.canvas.yview_scroll(-1 * (event.delta // 120), "units")
