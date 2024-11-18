@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.ttk as ttk
-from PIL import Image, ImageTk
+from PIL import Image
+from PIL import ImageTk
 from BuyPage import BuyPage
 from ViewPage import ViewPage
 from DairyPage import DairyPage

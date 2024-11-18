@@ -1,5 +1,6 @@
 import tkinter as tk
-from PIL import Image, ImageTk
+from PIL import Image
+from PIL import ImageTk
 
 
 class ProducePage(tk.Frame):
@@ -22,7 +23,8 @@ class ProducePage(tk.Frame):
                 "image": "imgProduce/cauliflower.jpg"},
             {"name": "Pack of Green Beans", "price": "$2.50",
                 "image": "imgProduce/greenbeans.jpg"},
-            {"name": "Pear", "price": "$1.25", "image": "imgProduce/pear.png"},
+            {"name": "Pear", "price": "$1.25", 
+                "image": "imgProduce/pear.png"},
             {"name": "3 Pack Peppers", "price": "$4.00",
                 "image": "imgProduce/peppers.jpg"}
         ]

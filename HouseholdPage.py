@@ -1,5 +1,6 @@
 import tkinter as tk
-from PIL import Image, ImageTk
+from PIL import Image
+from PIL import ImageTk
 
 
 class HouseholdPage(tk.Frame):
