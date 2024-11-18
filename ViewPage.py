@@ -86,8 +86,7 @@ class ViewPage(tk.Frame):
                 self.total += round(float(item["price"][1:]), 2)
                 self.quantity += 1
             except Exception as e:
-                print(f"Could not load image for 
-                      {item['name']}. Error: {e}")
+                print(f"Could not load image for {item['name']}. Error: {e}")
                 image = None
 
             # Image button for the item
@@ -130,6 +129,3 @@ class ViewPage(tk.Frame):
 
         print("Total:", self.total)
         print("Quantity:", self.quantity)
-
-    def on_mousewheel(self, event):
-        self.canvas.yview_scroll(-1 * (event.delta // 120), "units")

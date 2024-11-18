@@ -41,8 +41,7 @@ class ProducePage(tk.Frame):
                 image = ImageTk.PhotoImage(pil_image)
                 self.images.append(image) 
             except Exception as e:
-                print(f"Could not load image for 
-                      {item['name']}. Error: {e}")
+                print(f"Could not load image for {item['name']}. Error: {e}")
                 image = None
 
             # Create a button with the image only (no text in button)
